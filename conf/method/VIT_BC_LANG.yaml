@@ -1,0 +1,9 @@
+# @package _group_
+
+name: 'VIT_BC_LANG'
+activation: lrelu
+lr: 0.0005
+weight_decay: 0.000001
+grad_clip: 0.1
+demo_augmentation: True
+demo_augmentation_every_n: 10

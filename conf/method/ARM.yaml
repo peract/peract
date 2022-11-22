@@ -1,0 +1,24 @@
+# @package _group_
+
+name: 'ARM'
+activation: lrelu
+q_conf: True
+alpha: 0.05
+alpha_lr: 0.0001
+alpha_auto_tune: False
+next_best_pose_critic_lr: 0.0025
+next_best_pose_actor_lr: 0.001
+next_best_pose_critic_weight_decay: 0.00001
+next_best_pose_actor_weight_decay:  0.00001
+crop_shape: [16, 16]
+next_best_pose_tau: 0.005
+next_best_pose_critic_grad_clip: 5
+next_best_pose_actor_grad_clip: 5
+qattention_grad_clip: 5
+qattention_tau: 0.005
+qattention_lr: 0.0005
+qattention_weight_decay: 0.00001
+qattention_lambda_qreg: 0.0000001
+
+demo_augmentation: True
+demo_augmentation_every_n: 10

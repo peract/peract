@@ -1,0 +1,51 @@
+ddp:
+    master_addr: "localhost"
+    master_port: "29500"
+    num_devices: 1
+
+rlbench:
+    task_name: "multi"
+    tasks: [open_drawer,slide_block_to_color_target]
+    demos: 100
+    demo_path: /my/demo/path
+    episode_length: 25
+    cameras: [front,left_shoulder,right_shoulder,wrist]
+    camera_resolution: [128, 128]
+    scene_bounds: [-0.3, -0.5, 0.6, 0.7, 0.5, 1.6]
+    include_lang_goal_in_obs: True
+
+replay:
+    batch_size: 8
+    timesteps: 1
+    prioritisation: False
+    task_uniform: True # uniform sampling of tasks for multi-task buffers
+    use_disk: True
+    path: '/tmp/arm/replay' # only used when use_disk is True.
+    max_parallel_processes: 32
+
+framework:
+    log_freq: 100
+    save_freq: 100
+    train_envs: 1
+    replay_ratio: ${replay.batch_size}
+    transitions_before_train: 200
+    tensorboard_logging: True
+    csv_logging: True
+    training_iterations: 40000
+    gpu: 0
+    env_gpu: 0
+    logdir: '/tmp/arm_test/'
+    logging_level: 20 # https://docs.python.org/3/library/logging.html#levels
+    seeds: 1
+    start_seed: 0
+    load_existing_weights: False
+    num_weights_to_keep: 60 # older checkpoints will be deleted chronologically
+    num_workers: 0
+    record_every_n: 5
+
+defaults:
+    - method: C2FARM
+
+hydra:
+    run:
+        dir: ${framework.logdir}/${rlbench.task_name}/${method.name}

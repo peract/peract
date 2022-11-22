@@ -1,0 +1,35 @@
+method:
+    name: "PERACT_BC"
+
+rlbench:
+    task_name: "multi"
+    tasks: [open_drawer,slide_block_to_color_target]
+    demo_path: /my/demo/path
+    episode_length: 25
+    cameras: [front,left_shoulder,right_shoulder,wrist]
+    camera_resolution: [128, 128]
+    scene_bounds: [-0.3, -0.5, 0.6, 0.7, 0.5, 1.6]
+    include_lang_goal_in_obs: True
+    time_in_state: True
+    headless: True
+
+framework:
+    tensorboard_logging: True
+    csv_logging: True
+    gpu: 0
+    logdir: '/tmp/arm_test/'
+    start_seed: 0
+    record_every_n: 5
+
+    eval_envs: 1
+    eval_from_eps_number: 0
+    eval_episodes: 25
+    eval_type: 'missing' # or 'best'
+    eval_save_metrics: True
+
+cinematic_recorder:
+    enabled: False
+    camera_resolution: [1280, 720]
+    fps: 30
+    rotate_speed: 0.005
+    save_path: '/tmp/videos/'

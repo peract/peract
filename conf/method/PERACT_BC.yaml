@@ -1,0 +1,63 @@
+# @package _group_
+
+name: 'PERACT_BC'
+
+# Voxelization
+image_crop_size: 64
+bounds_offset: [0.15]
+voxel_sizes: [100]
+include_prev_layer: False
+
+# Perceiver
+num_latents: 2048
+latent_dim: 512
+transformer_depth: 6
+transformer_iterations: 1
+cross_heads: 1
+cross_dim_head: 64
+latent_heads: 8
+latent_dim_head: 64
+pos_encoding_with_lang: True
+conv_downsample: True
+lang_fusion_type: 'seq' # or 'concat'
+voxel_patch_size: 5
+voxel_patch_stride: 5
+final_dim: 64
+
+# Training
+input_dropout: 0.1
+attn_dropout: 0.1
+decoder_dropout: 0.0
+
+lr: 0.0005
+lr_scheduler: False
+num_warmup_steps: 3000
+optimizer: 'lamb' # or 'adam'
+
+lambda_weight_l2: 0.000001
+trans_loss_weight: 1.0
+rot_loss_weight: 1.0
+grip_loss_weight: 1.0
+collision_loss_weight: 1.0
+rotation_resolution: 5
+
+# Network
+activation: lrelu
+norm: None
+
+# Augmentation
+crop_augmentation: True
+transform_augmentation:
+  apply_se3: True
+  aug_xyz: [0.125, 0.125, 0.125]
+  aug_rpy: [0.0, 0.0, 45.0]
+  aug_rot_resolution: ${method.rotation_resolution}
+
+demo_augmentation: True
+demo_augmentation_every_n: 10
+
+# Ablations
+no_skip_connection: False
+no_perceiver: False
+no_language: False
+keypoint_method: 'heuristic'

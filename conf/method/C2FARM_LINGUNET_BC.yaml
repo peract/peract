@@ -1,0 +1,40 @@
+# @package _group_
+
+name: 'C2FARM_LINGUNET_BC'
+
+# Voxelization
+image_crop_size: 64
+bounds_offset: [0.15]
+voxel_sizes: [32, 32]
+include_prev_layer: False
+
+# Training
+lr: 0.0005
+lr_scheduler: False
+num_warmup_steps: 10000
+
+lambda_weight_l2: 0.000001
+trans_loss_weight: 1.0
+rot_loss_weight: 1.0
+grip_loss_weight: 1.0
+collision_loss_weight: 1.0
+rotation_resolution: 5
+
+# Network
+activation: lrelu
+norm: None
+
+# Augmentation
+crop_augmentation: True
+transform_augmentation:
+  apply_se3: True
+  aug_xyz: [0.125, 0.125, 0.125]
+  aug_rpy: [0.0, 0.0, 45.0]
+  aug_rot_resolution: ${method.rotation_resolution}
+
+demo_augmentation: True
+demo_augmentation_every_n: 10
+exploration_strategy: gaussian
+
+# Ablations
+keypoint_method: 'heuristic'
