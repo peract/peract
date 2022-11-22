@@ -387,13 +387,13 @@ License: [MIT](https://github.com/lucidrains/perceiver-pytorch/blob/main/LICENSE
 Changes: PerceiverIO adapted for 6-DoF manipulation.
 
 #### ViT
-Original: [https://github.com/lucidrains/vit-pytorch](https://github.com/lucidrains/vit-pytorch)  
-License: [MIT](https://github.com/lucidrains/vit-pytorch/blob/main/LICENSE)  
-Changes: ViT adapted for baseline.
+Original: [https://github.com/lucidrains/vit-pytorch](https://github.com/lucidrains/vit-pytorch)     
+License: [MIT](https://github.com/lucidrains/vit-pytorch/blob/main/LICENSE)   
+Changes: ViT adapted for baseline.   
 
 #### LAMB Optimizer
-Original: [https://github.com/cybertronai/pytorch-lamb](https://github.com/cybertronai/pytorch-lamb)
-License: [MIT](https://github.com/cybertronai/pytorch-lamb/blob/master/LICENSE)
+Original: [https://github.com/cybertronai/pytorch-lamb](https://github.com/cybertronai/pytorch-lamb)   
+License: [MIT](https://github.com/cybertronai/pytorch-lamb/blob/master/LICENSE)   
 Changes: None.
 
 Thanks for open-sourcing! 
