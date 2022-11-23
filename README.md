@@ -376,7 +376,7 @@ CUDA_VISIBLE_DEVICES=0 python eval.py \
     framework.csv_logging=True \
     framework.tensorboard_logging=True \
     framework.eval_type='last' \
-    rlbench.headless=False \
+    rlbench.headless=True \
     cinematic_recorder.enabled=True
 ```
 
