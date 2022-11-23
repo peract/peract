@@ -178,7 +178,7 @@ CUDA_VISIBLE_DEVICES=0 python eval.py \
 ```
 If you are on a headless machine turn off the visualization with `headless=True`.
 
-You can evaluate the same agent on other tasks. First generate a validation dataset like above (or [download pre-generated datasets](#download)) and then run `eval.py`.
+You can evaluate the same agent on other tasks. First generate a validation dataset like above (or [download a pre-generated dataset](#download)) and then run `eval.py`.
 
 **Note:** The dowloaded checkpoint might not necessarily be the best one for a given task, it's simply the last checkpoint from training.
 
