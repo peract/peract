@@ -15,7 +15,7 @@ For the latest updates, see: [peract.github.io](https://peract.github.io)
 
 ## Guides
 
-- Getting Started: [Installation](#installation), [Quickstart](#quickstart), [Download](#download)
+- Getting Started: [Installation](#installation), [Quickstart](#quickstart), [Checkpoints and Pre-Generated Datasets](#download)
 - Data Generation: [Data Generation](#data-generation)
 - Training & Evaluation: [Multi-Task Training and Evaluation](#training-and-evaluation)
 - Miscellaneous: [Notebooks](#notebooks), [Disclaimers](#disclaimers-and-limitations), [FAQ](#faq), [Docker Guide](#docker-guide), [Licenses](#licenses)
