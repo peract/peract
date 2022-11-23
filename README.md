@@ -393,7 +393,7 @@ Coming soon...
 
 ## Notebooks
 
-- [Colab Tutorial](https://colab.research.google.com/drive/1wpaosDS94S0rmtGmdnP0J1TjS7mEM14V?usp=sharing): This tutorial is a good starting point for understanding the full data-loading and training pipeline.
+- [Colab Tutorial](https://colab.research.google.com/drive/1wpaosDS94S0rmtGmdnP0J1TjS7mEM14V?usp=sharing): This tutorial is a good starting point for understanding the data-loading and training pipeline.
 - Dataset Visualizer: Coming soon ... see [Colab](https://colab.research.google.com/drive/1wpaosDS94S0rmtGmdnP0J1TjS7mEM14V?usp=sharing) for now.
 - Q-Prediction Visualizer:  Coming soon ... see [Colab](https://colab.research.google.com/drive/1wpaosDS94S0rmtGmdnP0J1TjS7mEM14V?usp=sharing) for now.
 - Results Notebook: Coming soon ...
