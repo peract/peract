@@ -8,6 +8,8 @@ PerAct is an end-to-end behavior cloning agent that learns to perform a wide var
 
 ![](media/sim_tasks.gif)
 
+The best entry-point for understanding PerAct is [this Colab Tutorial](https://colab.research.google.com/drive/1wpaosDS94S0rmtGmdnP0J1TjS7mEM14V?usp=sharing). If you just want to apply PerAct to your problem, then start with the notebook, otherwise this repo is for mostly reproducing  RLBench results from the paper. 
+
 For the latest updates, see: [peract.github.io](https://peract.github.io)
 
 
@@ -16,7 +18,7 @@ For the latest updates, see: [peract.github.io](https://peract.github.io)
 - Getting Started: [Installation](#installation), [Quickstart](#quickstart), [Download](#download)
 - Data Generation: [Data Generation](#data-generation)
 - Training & Evaluation: [Multi-Task Training and Evaluation](#training-and-evaluation)
-- Miscellaneous: [Disclaimers](#disclaimers-and-limitations), [FAQ](#faq), [Docker Guide](#docker-guide), [Licenses](#licenses)
+- Miscellaneous: [Notebooks](#notebooks), [Disclaimers](#disclaimers-and-limitations), [FAQ](#faq), [Docker Guide](#docker-guide), [Licenses](#licenses)
 - Acknowledgements: [Acknowledgements](#acknowledgements), [Citations](#citations)
 
 ## Installation
@@ -93,7 +95,7 @@ For [running in headless mode](https://github.com/MohitShridhar/RLBench/tree/per
 
 #### 4. YARR
 
-PerAct uses my [YARR fork](https://github.com/MohitShridhar/YARR/tree/peract). Follow the instructions from the official [YARR repo](https://github.com/stepjam/YARR). Reproduced here for convenience:
+PerAct uses my [YARR fork](https://github.com/MohitShridhar/YARR/tree/peract). Follow the instructions from the official [YARR repo](https://github.com/stepjam/YARR); reproduced here for convenience:
 
 ```bash
 cd <install_dir>
@@ -191,6 +193,8 @@ Is there one big zip file with all splits and tasks instead of individual files?
 ### Pre-Trained Checkpoints
 
 #### [PerAct (600K)](https://drive.google.com/file/d/1vc_IkhxhNfEeEbiFPHxt_AsDclDNW8d5/view?usp=share_link)
+- Num Tasks: 18
+- Train Demos: 100 episodes per task
 - Voxel Size: 100x100x100
 - Cameras: `front`, `left_shoulder`, `right_shoulder`, `wrist`
 - Latents: 2048
@@ -247,7 +251,7 @@ You can probably train PerAct on more RLBench tasks. These 18 tasks were hand-se
 The following is a guide for training everything from scratch. All tasks follow a 4-phase workflow:
  
 1. Generate `train`, `val`, `test` datasets with `data_generator.py` or download pre-generated datasets. 
-2. Train agent with `train.py`.
+2. Train agent with `train.py` and save 10K iteration checkpoints.
 3. Run validation with `eval.py` with `framework.eval_type=missing` to find the best checkpoint on `val` tasks and save results in `eval_data.csv`.
 4. Evaluate the best checkpoint in `eval_data.csv` on `test` tasks with `eval.py` and `framework.eval_type=best`. Save final results to `test_data.csv`. 
 
@@ -293,7 +297,7 @@ Use `tensorboard` to monitor training progress with logs inside `framework.logdi
 
 ### Validation
 
-Evaluate `PERACT_BC` seed0 on `val` sequentially (slow!) on all 18 tasks:
+Evaluate `PERACT_BC` seed0 on 18 `val` tasks sequentially (slow!):
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python eval.py \
@@ -331,6 +335,26 @@ CUDA_VISIBLE_DEVICES=0 python eval.py \
 
 The final results will be saved in `test_data.csv`.
 
+### Baselines and Ablations
+
+All agents reported in the paper are [here](https://github.com/peract/peract/tree/main/agents) along with their respective [config files](https://github.com/peract/peract/tree/main/conf/method):
+
+|    **Code Name**   | **Paper Name** |
+|:------------------:|:--------------:|
+|      `PERACT_BC`   |     PerAct     |
+|`C2FARM_LINGUNET_BC`|    C2FARM-BC   |
+|    `VIT_BC_LANG`   | Image-BC (VIT) |
+|      `BC_LANG`     | Image-BC (CNN) |
+
+PerAct ablations are set with:
+
+```bash
+method.no_skip_connection: False
+method.no_perceiver: False
+method.no_language: False
+method.keypoint_method: 'heuristic'
+```
+
 ## Disclaimers and Limitations
 
 - **Code quality level**: Desperate grad student. 
@@ -339,6 +363,8 @@ The final results will be saved in `test_data.csv`.
 - **Parallelization**: A lot of things (data generation, evaluation) are slow because everything is done serially. Parallelizing these processes will save you a lot of time. 
 - **Impossible tasks**: Some tasks like `push_buttons` are not solvable by PerAct since it doesn't have any memory.
 - **Switch from DP to DDP**: For the paper submission, I was using PyTorch DataParallel for multi-gpu training. For this code release, I switched to DistributedDataParallel. Hopefully, I didn't introduce any new bugs. 
+- **Collision avoidance**: All simulated evaluations use V-REP's internal motion-planner with collision avoidance. For real-world experiments, you have to setup MoveIt to use the voxel grid for avoiding occupied voxels. 
+- **YARR Modifications**: My changes to the YARR repo are a total mess. Sorry :(
 - **Other limitations**: See Appendix L of the paper for more details.
 
 ## FAQ
@@ -355,11 +381,24 @@ This means either there is some sort of bias in the dataset that the agent is ex
 
 Ideally, you should create a validation set with heldout instances and then choose the checkpoint with the lowest translation and rotation errors. You can also reuse the training instances but swap the language instructions with unseen goals. But all real-world experiments in the paper simply chose the last checkpoint. 
 
+#### Can you replace the motion-planner with a learnable module?
+
+Yes, see [C2FARM+LPR](https://github.com/stepjam/ARM) by James et al. 
+
 
 ## Docker Guide
 
 Coming soon...
  
+
+## Notebooks
+
+- [Colab Tutorial](https://colab.research.google.com/drive/1wpaosDS94S0rmtGmdnP0J1TjS7mEM14V?usp=sharing): This tutorial is a good starting point for understanding the full data-loading and training pipeline.
+- Dataset Visualizer: Coming soon ... see [Colab](https://colab.research.google.com/drive/1wpaosDS94S0rmtGmdnP0J1TjS7mEM14V?usp=sharing) for now.
+- Q-Prediction Visualizer:  Coming soon ... see [Colab](https://colab.research.google.com/drive/1wpaosDS94S0rmtGmdnP0J1TjS7mEM14V?usp=sharing) for now.
+- Results Notebook: Coming soon ...
+
+
 ## Hardware Requirements
 
 PerAct agents for the paper were trained with 8 P100 cards with 16GB of memory each. You can use fewer GPUs, but training will take a long time to converge.
@@ -395,6 +434,12 @@ Changes: ViT adapted for baseline.
 Original: [https://github.com/cybertronai/pytorch-lamb](https://github.com/cybertronai/pytorch-lamb)   
 License: [MIT](https://github.com/cybertronai/pytorch-lamb/blob/master/LICENSE)   
 Changes: None.
+
+#### OpenAI CLIP
+
+Original: [https://github.com/openai/CLIP](https://github.com/openai/CLIP)  
+License: [MIT](https://github.com/openai/CLIP/blob/main/LICENSE)  
+Changes: Minor modifications to extract token and sentence features.
 
 Thanks for open-sourcing! 
 
