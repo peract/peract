@@ -293,6 +293,8 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py \
 
 Make sure there is enough disk-space for `replay.path` and `framework.logdir`. Adjust `replay.max_parallel_processes` to fill the replay buffer in parallel based on your resources. You can also train on fewer GPUs, but training will take a long time to converge. 
 
+To get started, you should probably train on a small number of `rlbench.tasks`. 
+
 Use `tensorboard` to monitor training progress with logs inside `framework.logdir`.
 
 ### Validation
