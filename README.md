@@ -176,7 +176,7 @@ CUDA_VISIBLE_DEVICES=0 python eval.py \
     framework.eval_type='last' \
     rlbench.headless=False
 ```
-If you are on a headless machine turn off the visualization with `headless=True`.
+If you are on a headless machine, turn off the visualization with `headless=True`.
 
 You can evaluate the same agent on other tasks. First generate a validation dataset like above (or [download a pre-generated dataset](#download)) and then run `eval.py`.
 
@@ -309,6 +309,7 @@ CUDA_VISIBLE_DEVICES=0 python eval.py \
     framework.tensorboard_logging=True \
     framework.eval_envs=1 \
     framework.start_seed=0 \
+    framework.eval_from_eps_number=0 \
     framework.eval_episodes=25 \
     framework.eval_type='missing' \
     rlbench.headless=True
@@ -328,6 +329,7 @@ CUDA_VISIBLE_DEVICES=0 python eval.py \
     framework.tensorboard_logging=True \
     framework.eval_envs=1 \
     framework.start_seed=0 \
+    framework.eval_from_eps_number=0 \
     framework.eval_episodes=25 \
     framework.eval_type='best' \
     rlbench.headless=True
