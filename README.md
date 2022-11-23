@@ -484,7 +484,7 @@ Thanks for open-sourcing!
 ## Release Notes
 
 **Update 23-Nov-2022**
-- I ditched PyTorch Lightning and implemented multi-gpu trying directly with Pytorch DDP. I could have introduced some bugs during this transition and from refactoring the repo in general. 
+- I ditched PyTorch Lightning and implemented multi-gpu training directly with Pytorch DDP. I could have introduced some bugs during this transition and from refactoring the repo in general. 
 
 **Update 31-Oct-2022**:
 - I have pushed my changes to [RLBench](https://github.com/MohitShridhar/RLBench/tree/peract) and [YARR](https://github.com/MohitShridhar/YARR/tree/peract). The data generation is pretty similar to [ARM](https://github.com/stepjam/ARM#running-experiments), except you run `data_generator.py` with `--all_variations=True`. You should be able to use these generated datasets with the [Colab](https://colab.research.google.com/drive/1wpaosDS94S0rmtGmdnP0J1TjS7mEM14V?usp=sharing) code.  
