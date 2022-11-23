@@ -15,7 +15,7 @@ For the latest updates, see: [peract.github.io](https://peract.github.io)
 
 ## Guides
 
-- Getting Started: [Installation](#installation), [Quickstart](#quickstart), [Checkpoints and Pre-Generated Datasets](#download)
+- Getting Started: [Installation](#installation), [Quickstart](#quickstart), [Checkpoints and Pre-Generated Datasets](#download), [Model Card](model-card.md)
 - Data Generation: [Data Generation](#data-generation)
 - Training & Evaluation: [Multi-Task Training and Evaluation](#training-and-evaluation)
 - Miscellaneous: [Notebooks](#notebooks), [Disclaimers](#disclaimers-and-limitations), [FAQ](#faq), [Docker Guide](#docker-guide), [Licenses](#licenses)
@@ -511,3 +511,7 @@ Thanks for open-sourcing!
   publisher={IEEE}
 }
 ```
+
+## Questions or Issues?
+
+Please file an issue with the issue tracker.  
