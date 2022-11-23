@@ -1,7 +1,6 @@
 import os
 import gdown
 
-https://drive.google.com/file/d//view?usp=sharing
 url = 'https://drive.google.com/uc?id=1vc_IkhxhNfEeEbiFPHxt_AsDclDNW8d5'
 output = 'peract_600k.zip'
 
