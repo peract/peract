@@ -361,7 +361,7 @@ method.keypoint_method: 'heuristic'
 
 - **Code quality level**: Desperate grad student. 
 - **Why isn't your code more modular?**: My code, like this project, is end-to-end. 
-- **Small test set**: The test should be larger than just 25 episodes. If you parallelize the evaluation, you can easily evaluate on larger test sets.
+- **Small test set**: The test set should be larger than just 25 episodes. If you parallelize the evaluation, you can easily evaluate on larger test sets.
 - **Parallelization**: A lot of things (data generation, evaluation) are slow because everything is done serially. Parallelizing these processes will save you a lot of time. 
 - **Impossible tasks**: Some tasks like `push_buttons` are not solvable by PerAct since it doesn't have any memory.
 - **Switch from DP to DDP**: For the paper submission, I was using PyTorch DataParallel for multi-gpu training. For this code release, I switched to DistributedDataParallel. Hopefully, I didn't introduce any new bugs. 
