@@ -37,6 +37,9 @@ class QattentionLingU3DNet(nn.Module):
         self._lingunet_dropout = lingunet_dropout
         self._clip_lang_feat_dim = 1024
 
+        if self._voxel_size < 16:
+            raise Exception("Voxel size for C2FARM_LINGUNET_BC should be at least 16 or higher")
+
     def build(self):
         use_residual = False
         self._build_calls += 1
