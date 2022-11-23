@@ -357,6 +357,33 @@ method.no_language: False
 method.keypoint_method: 'heuristic'
 ```
 
+## Recording Videos
+
+To save high-resolution videos of agent executions, set `cinematic_recorder.enabled=True` with `eval.py`:
+
+```bash
+cd $PERACT_ROOT
+CUDA_VISIBLE_DEVICES=0 python eval.py \
+    rlbench.tasks=[open_drawer] \
+    rlbench.task_name='multi' \
+    rlbench.demo_path=$PERACT_ROOT/data/val \
+    framework.gpu=0 \
+    framework.logdir=$PERACT_ROOT/ckpts/ \
+    framework.start_seed=0 \
+    framework.eval_envs=1 \
+    framework.eval_from_eps_number=0 \
+    framework.eval_episodes=3 \
+    framework.csv_logging=True \
+    framework.tensorboard_logging=True \
+    framework.eval_type='last' \
+    rlbench.headless=False \
+    cinematic_recorder.enabled=True
+```
+
+Videos will be saved at `$PERACT_ROOT/ckpts/multi/PERACT_BC/seed0/videos/open_drawer_w600000_s0_succ.mp4`.
+
+**Note:** Rendering at high-resolutions is super slow and will take a long time to finish.
+
 ## Disclaimers and Limitations
 
 - **Code quality level**: Desperate grad student. 
