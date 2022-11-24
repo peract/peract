@@ -213,27 +213,27 @@ python dataset_generator.py --tasks=open_drawer \
 You can run these in parallel for multiple tasks. Here is a list of 18 tasks used in the paper: 
 
 ```
-close_jar
-insert_onto_square_peg
-light_bulb_in
-meat_off_grill
 open_drawer
-place_cups
-place_shape_in_shape_sorter
-push_buttons
-put_groceries_in_cupboard
-put_item_in_drawer
-put_money_in_safe
-reach_and_drag
-stack_blocks
-stack_cups
-turn_tap
-place_wine_at_rack_location
 slide_block_to_color_target
 sweep_to_dustpan_of_size
+meat_off_grill
+turn_tap
+put_item_in_drawer
+close_jar
+reach_and_drag
+stack_blocks
+light_bulb_in
+put_money_in_safe
+place_wine_at_rack_location
+put_groceries_in_cupboard
+place_shape_in_shape_sorter
+push_buttons
+insert_onto_square_peg
+stack_cups
+place_cups
 ```
 
-You can probably train PerAct on more RLBench tasks. These 18 tasks were hand-selected for their diversity in task variations and language instruction. 
+You can probably train PerAct on more RLBench tasks. These 18 tasks were hand-selected for their diversity in task variations and language instructions. 
 
 **Warning**: Each scene generated with `data_generator.py` will use a different random seed to configure objects and states in the scene. This means you will get very different train, val, and test sets to the pre-generated ones. This should be fine for PerAct, but you will likely see small differences in evaluation performances. It's recommended to use the pre-generated datasets for reproducibility. Using larger test sets will also help. 
 
