@@ -47,7 +47,10 @@ def eval_seed(train_cfg,
     tasks = eval_cfg.rlbench.tasks
     rg = RolloutGenerator()
 
-    if train_cfg.method.name == 'BC_LANG':
+    if train_cfg.method.name == 'ARM':
+        raise NotImplementedError('ARM not yet supported for eval.py')
+
+    elif train_cfg.method.name == 'BC_LANG':
         agent = bc_lang.launch_utils.create_agent(
             cams[0],
             train_cfg.method.activation,
@@ -65,14 +68,14 @@ def eval_seed(train_cfg,
             train_cfg.rlbench.camera_resolution,
             train_cfg.method.grad_clip)
 
-    elif train_cfg.method.name == 'C2FARM_RL':
-        agent = c2farm_rl.launch_utils.create_agent(train_cfg)
-
     elif train_cfg.method.name == 'C2FARM_LINGUNET_BC':
         agent = c2farm_lingunet_bc.launch_utils.create_agent(train_cfg)
 
     elif train_cfg.method.name == 'PERACT_BC':
         agent = peract_bc.launch_utils.create_agent(train_cfg)
+
+    elif train_cfg.method.name == 'PERACT_RL':
+        raise NotImplementedError("PERACT_RL not yet supported for eval.py")
 
     else:
         raise ValueError('Method %s does not exists.' % train_cfg.method.name)
