@@ -185,7 +185,7 @@ Is there one big zip file with all splits and tasks instead of individual files?
 
 #### [PerAct (600K)](https://drive.google.com/file/d/1vc_IkhxhNfEeEbiFPHxt_AsDclDNW8d5/view?usp=share_link)
 - Num Tasks: 18
-- Train Demos: 100 episodes per task (for all task variations)
+- Train Demos: 100 episodes per task (each task includes all variations)
 - Voxel Size: 100x100x100
 - Cameras: `front`, `left_shoulder`, `right_shoulder`, `wrist`
 - Latents: 2048
