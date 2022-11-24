@@ -132,7 +132,7 @@ A quick tutorial on evaluating a pre-trained multi-task agent.
 Download a [pre-trained PerAct checkpoint](https://drive.google.com/file/d/1vc_IkhxhNfEeEbiFPHxt_AsDclDNW8d5/view?usp=share_link) trained with 100 demos per task (18 tasks in total):
 ```bash
 cd $PERACT_ROOT
-python script/quickstart_download.py 
+python scripts/quickstart_download.py 
 # if this throws PermissionErrors, see https://github.com/wkentaro/gdown/issues/43
 ```
 
