@@ -44,6 +44,7 @@ def run_seed(rank,
         raise NotImplementedError("ARM is not supported yet")
 
     elif cfg.method.name == 'BC_LANG':
+        assert cfg.ddp.num_devices == 1, "BC_LANG only supports single GPU training"
         replay_buffer = bc_lang.launch_utils.create_replay(
             cfg.replay.batch_size, cfg.replay.timesteps,
             cfg.replay.prioritisation,
@@ -63,6 +64,7 @@ def run_seed(rank,
             cfg.method.grad_clip)
 
     elif cfg.method.name == 'VIT_BC_LANG':
+        assert cfg.ddp.num_devices == 1, "VIT_BC_LANG only supports single GPU training"
         replay_buffer = vit_bc_lang.launch_utils.create_replay(
             cfg.replay.batch_size, cfg.replay.timesteps,
             cfg.replay.prioritisation,

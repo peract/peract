@@ -124,15 +124,6 @@ python setup.py develop
 
 **Note**: You might need versions of `torch==1.7.1` and `torchvision==0.8.2` that are compatible with your CUDA and hardware. Later versions should also be fine (in theory). 
 
-### Gotchas
-
-Later, if you see GL errors, it's probably the PyRender voxel visualizer. See this [issue](https://github.com/mmatl/pyrender/issues/86) for reference. You might have to set the following environment variables depending on your setup:
-
-```bash
-export DISPLAY=:0
-export MESA_GL_VERSION_OVERRIDE=4.1
-export PYOPENGL_PLATFORM=egl
-```
 
 ## Quickstart
 
@@ -358,6 +349,23 @@ method.no_perceiver: False
 method.no_language: False
 method.keypoint_method: 'heuristic'
 ```
+
+### Gotchas
+
+#### OpenGL Errors
+
+GL errors are probably being caused by the PyRender voxel visualizer. See this [issue](https://github.com/mmatl/pyrender/issues/86) for reference. You might have to set the following environment variables depending on your setup:
+
+```bash
+export DISPLAY=:0
+export MESA_GL_VERSION_OVERRIDE=4.1
+export PYOPENGL_PLATFORM=egl
+```
+
+#### Unpickling Error
+
+If you see `_pickle.UnpicklingError: invalid load key, '\x9e'`, maybe one of the replay pickle files got corrupted when quitting the training script. Try deleting files in `replay.path` and restarting training.
+
 
 ## Recording Videos
 
