@@ -210,9 +210,9 @@ python dataset_generator.py --tasks=open_drawer \
                             --all_variations=True
 ```
 
-You can run these in parallel for multiple tasks. Here is a list of 18 tasks used in the paper: 
+You can run these in parallel for multiple tasks. Here is a list of 18 tasks used in the paper (in the same order as results Table 1):
 
-```
+```bash 
 open_drawer
 slide_block_to_color_target
 sweep_to_dustpan_of_size
