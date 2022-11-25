@@ -404,6 +404,7 @@ Videos will be saved at `$PERACT_ROOT/ckpts/multi/PERACT_BC/seed0/videos/open_dr
 - **Switch from DP to DDP**: For the paper submission, I was using PyTorch DataParallel for multi-gpu training. For this code release, I switched to DistributedDataParallel. Hopefully, I didn't introduce any new bugs. 
 - **Collision avoidance**: All simulated evaluations use V-REP's internal motion-planner with collision avoidance. For real-world experiments, you have to setup MoveIt to use the voxel grid for avoiding occupied voxels. 
 - **YARR Modifications**: My changes to the YARR repo are a total mess. Sorry :(
+- **LAMB Optimizer**: The LAMB implementation has some [issues](https://github.com/cybertronai/pytorch-lamb/issues/10) but still works 🤷. Maybe use [FusedLAMB](https://nvidia.github.io/apex/_modules/apex/optimizers/fused_lamb.html) instead. 
 - **Other limitations**: See Appendix L of the paper for more details.
 
 ## FAQ
