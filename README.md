@@ -491,6 +491,7 @@ Thanks for open-sourcing!
 - [PyRep License (MIT)](https://github.com/stepjam/PyRep/blob/master/LICENSE)
 - [Perceiver PyTorch License (MIT)](https://github.com/lucidrains/perceiver-pytorch/blob/main/LICENSE)
 - [LAMB License (MIT)](https://github.com/cybertronai/pytorch-lamb/blob/master/LICENSE)
+- [CLIP License (MIT)](https://github.com/openai/CLIP/blob/main/LICENSE)
 
 ## Release Notes
 
