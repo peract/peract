@@ -206,6 +206,8 @@ Is there one big zip file with all splits and tasks instead of individual files?
 - Self-Attention Layers: 6
 - Voxel Feature Dim: 64
 
+See [quickstart guide](#quickstart) on how to evaluate these checkpoints. Make sure `framework.start_seed` is set to the correct ID. 
+
 ## Data Generation
 
 Data generation is pretty similar to the [ARM setup](https://github.com/stepjam/RLBench), except you use `--all_variations=True` to sample all task variations:
