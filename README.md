@@ -183,9 +183,11 @@ Is there one big zip file with all splits and tasks instead of individual files?
 
 ### Pre-Trained Checkpoints
 
-#### [PerAct (600K)](https://drive.google.com/file/d/1vc_IkhxhNfEeEbiFPHxt_AsDclDNW8d5/view?usp=share_link)
+#### [PerAct - 2048 Latents](https://drive.google.com/file/d/1vc_IkhxhNfEeEbiFPHxt_AsDclDNW8d5/view?usp=share_link)
+- ID: `seed0`
 - Num Tasks: 18
-- Train Demos: 100 episodes per task (each task includes all variations)
+- Training Demos: 100 episodes per task (each task includes all variations)
+- Training Iterations: 600k
 - Voxel Size: 100x100x100
 - Cameras: `front`, `left_shoulder`, `right_shoulder`, `wrist`
 - Latents: 2048
@@ -193,7 +195,16 @@ Is there one big zip file with all splits and tasks instead of individual files?
 - Voxel Feature Dim: 64
 - Data Augmentation: 45 deg yaw perturbations
 
-Todo: add more checkpoints ...
+#### [PerAct - 512 Latents](https://drive.google.com/file/d/1c3U0BXCC-2vwNKBGFJikNsKpdgK28znX/view?usp=share_link)
+- ID: `seed5`
+- Num Tasks: 18
+- Training Demos: 100 episodes per task (each task includes all variations)
+- Training Iterations: 600k
+- Voxel Size: 100x100x100
+- Cameras: `front`, `left_shoulder`, `right_shoulder`, `wrist`
+- Latents: 512
+- Self-Attention Layers: 6
+- Voxel Feature Dim: 64
 
 ## Data Generation
 
