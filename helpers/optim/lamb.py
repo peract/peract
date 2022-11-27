@@ -1,5 +1,9 @@
 """Lamb optimizer."""
 
+# LAMB optimizer used as is.
+# Source: https://github.com/cybertronai/pytorch-lamb
+# License: https://github.com/cybertronai/pytorch-lamb/blob/master/LICENSE
+
 import collections
 import math
 

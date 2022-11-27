@@ -1,3 +1,7 @@
+# Perceiver IO implementation adpated for manipulation
+# Source: https://github.com/lucidrains/perceiver-pytorch
+# License: https://github.com/lucidrains/perceiver-pytorch/blob/main/LICENSE
+
 from math import pi, log
 from functools import wraps
 

@@ -1,3 +1,7 @@
+# Voxelizer modified from ARM for DDP training
+# Source: https://github.com/stepjam/ARM
+# License: https://github.com/stepjam/ARM/LICENSE
+
 from functools import reduce
 from operator import mul
 

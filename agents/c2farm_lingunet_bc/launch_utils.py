@@ -1,3 +1,7 @@
+# Adapted from ARM
+# Source: https://github.com/stepjam/ARM
+# License: https://github.com/stepjam/ARM/LICENSE
+
 import logging
 from typing import List
 

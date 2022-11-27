@@ -1,7 +1,7 @@
 ###########################################
 #### Authors: OpenAI
 #### Credit: https://github.com/openai/CLIP
-#### MIT License.
+#### https://github.com/openai/CLIP/blob/main/LICENSE
 
 from collections import OrderedDict
 from typing import Tuple, Union
