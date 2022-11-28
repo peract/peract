@@ -438,6 +438,10 @@ Ideally, you should create a validation set with heldout instances and then choo
 
 Yes, see [C2FARM+LPR](https://github.com/stepjam/ARM) by James et al. 
 
+#### Why do I need to generate a `val` and `test` set?
+
+Two reasons: (1) One-to-one comparisons between two agents. We can take an episode from the test dataset, and use its random seed to spawn the exact same objects and object pose configurations every time. (2) Checking if the task is actually solvable, at least by an expert. We don't want to evaluate on unsolvable task instances. See [issue3](https://github.com/peract/peract/issues/3) for reference.
+
 
 ## Docker Guide
 
