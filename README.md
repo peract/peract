@@ -427,7 +427,7 @@ Videos will be saved at `$PERACT_ROOT/ckpts/multi/PERACT_BC/seed0/videos/open_dr
 It depends on the complexity of the task. With 10-20 demonstrations the agent should start to do something useful, but it will often make mistakes by picking the wrong object. For robustness you probably need 50-100 demostrations. A good way to gauge how much data you might need is to setup a simulated version of the problem and evaluate agents trained with 10, 100, 250 demonstrations.
 
 #### How long should I train the agent for? When will I start seeing good evaluation performance?
-This depends on the number, complexity, and diversity of tasks, and also how much compute you have. Take a look at this [checkpoint folder](https://drive.google.com/file/d/1vc_IkhxhNfEeEbiFPHxt_AsDclDNW8d5/view?usp=share_link) containing `train_data.csv`, `eval_data.csv` and `test_data.csv`. These log files should give you a sense of what the training losses look like and what evaluation performances to expect. All multi-task agents in the paper were trained for 600K iterations, and single-task agents were trained for 60K iterations, all with 8-GPU setups.
+This depends on the number, complexity, and diversity of tasks, and also how much compute you have. Take a look at this [checkpoint folder](https://drive.google.com/file/d/1vc_IkhxhNfEeEbiFPHxt_AsDclDNW8d5/view?usp=share_link) containing `train_data.csv`, `eval_data.csv` and `test_data.csv`. These log files should give you a sense of what the training losses look like and what evaluation performances to expect. All multi-task agents in the paper were trained for 600K iterations, and single-task agents were trained for 40K iterations, all with 8-GPU setups.
 
 #### Why doesn't the agent follow my language instruction?
 
