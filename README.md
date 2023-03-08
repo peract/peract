@@ -80,7 +80,7 @@ If you encounter errors, please use the [PyRep issue tracker](https://github.com
 
 #### 3. RLBench
 
-PerAct uses my [RLBench fork](https://github.com/MohitShridhar/RLBench/tree/peract). Follow the instructions from the official [RLBench repo](https://github.com/stepjam/RLBench); reproduced here for convenience:
+PerAct uses my [RLBench fork](https://github.com/MohitShridhar/RLBench/tree/peract). 
 
 ```bash
 cd <install_dir>
@@ -95,7 +95,7 @@ For [running in headless mode](https://github.com/MohitShridhar/RLBench/tree/per
 
 #### 4. YARR
 
-PerAct uses my [YARR fork](https://github.com/MohitShridhar/YARR/tree/peract). Follow the instructions from the official [YARR repo](https://github.com/stepjam/YARR); reproduced here for convenience:
+PerAct uses my [YARR fork](https://github.com/MohitShridhar/YARR/tree/peract).
 
 ```bash
 cd <install_dir>
