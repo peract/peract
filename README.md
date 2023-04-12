@@ -80,7 +80,7 @@ If you encounter errors, please use the [PyRep issue tracker](https://github.com
 
 #### 3. RLBench
 
-PerAct uses my [RLBench fork](https://github.com/MohitShridhar/RLBench/tree/peract). Follow the instructions from the official [RLBench repo](https://github.com/stepjam/RLBench); reproduced here for convenience:
+PerAct uses my [RLBench fork](https://github.com/MohitShridhar/RLBench/tree/peract). 
 
 ```bash
 cd <install_dir>
@@ -95,7 +95,7 @@ For [running in headless mode](https://github.com/MohitShridhar/RLBench/tree/per
 
 #### 4. YARR
 
-PerAct uses my [YARR fork](https://github.com/MohitShridhar/YARR/tree/peract). Follow the instructions from the official [YARR repo](https://github.com/stepjam/YARR); reproduced here for convenience:
+PerAct uses my [YARR fork](https://github.com/MohitShridhar/YARR/tree/peract).
 
 ```bash
 cd <install_dir>
@@ -443,6 +443,10 @@ Yes, see [C2FARM+LPR](https://github.com/stepjam/ARM) by James et al.
 #### Why do I need to generate a `val` and `test` set?
 
 Two reasons: (1) One-to-one comparisons between two agents. We can take an episode from the test dataset, and use its random seed to spawn the exact same objects and object pose configurations every time. (2) Checking if the task is actually solvable, at least by an expert. We don't want to evaluate on unsolvable task instances. See [issue3](https://github.com/peract/peract/issues/3) for reference.
+
+#### Why are duplicate keyframes loaded into the replay buffer?
+
+This is a design choice in [ARM (by James et al)](https://github.com/stepjam/ARM/blob/main/arm/c2farm/launch_utils.py#L161). I am guessing the keyframes get added several times because they indicate important "phase transitions" between trajectory bottlenecks, and having several copies makes them more likely to be sampled. See [issue6](https://github.com/peract/peract/issues/6#issuecomment-1355555980).
 
 
 ## Docker Guide
