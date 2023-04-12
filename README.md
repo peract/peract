@@ -8,7 +8,7 @@ PerAct is an end-to-end behavior cloning agent that learns to perform a wide var
 
 ![](media/sim_tasks.gif)
 
-The best entry-point for understanding PerAct is [this Colab Tutorial](https://colab.research.google.com/drive/1wpaosDS94S0rmtGmdnP0J1TjS7mEM14V?usp=sharing). If you just want to apply PerAct to your problem, then start with the notebook, otherwise this repo is for mostly reproducing  RLBench results from the paper. 
+The best entry-point for understanding PerAct is [this Colab Tutorial](https://colab.research.google.com/drive/1HAqemP4cE81SQ6QO1-N85j5bF4C0qLs0?usp=sharing). If you just want to apply PerAct to your problem, then start with the notebook, otherwise this repo is for mostly reproducing  RLBench results from the paper. 
 
 For the latest updates, see: [peract.github.io](https://peract.github.io)
 
@@ -129,11 +129,10 @@ python setup.py develop
 
 A quick tutorial on evaluating a pre-trained multi-task agent.
 
-Download a [pre-trained PerAct checkpoint](https://drive.google.com/file/d/1vc_IkhxhNfEeEbiFPHxt_AsDclDNW8d5/view?usp=share_link) trained with 100 demos per task (18 tasks in total):
+Download a [pre-trained PerAct checkpoint](https://github.com/peract/peract/releases/download/v1.0.0/peract_600k.zip) trained with 100 demos per task (18 tasks in total):
 ```bash
 cd $PERACT_ROOT
-python scripts/quickstart_download.py 
-# if this throws PermissionErrors, see https://github.com/wkentaro/gdown/issues/43
+sh scripts/quickstart_download.sh
 ```
 
 Generate a small `val` set of 10 episodes for `open_drawer` inside `$PERACT_ROOT/data`:
@@ -183,7 +182,7 @@ Is there one big zip file with all splits and tasks instead of individual files?
 
 ### Pre-Trained Checkpoints
 
-#### [PerAct - 2048 Latents](https://drive.google.com/file/d/1vc_IkhxhNfEeEbiFPHxt_AsDclDNW8d5/view?usp=share_link)
+#### [PerAct - 2048 Latents](https://github.com/peract/peract/releases/download/v1.0.0/peract_600k.zip)
 - ID: `seed0`
 - Num Tasks: 18
 - Training Demos: 100 episodes per task (each task includes all variations)
@@ -195,7 +194,7 @@ Is there one big zip file with all splits and tasks instead of individual files?
 - Voxel Feature Dim: 64
 - Data Augmentation: 45 deg yaw perturbations
 
-#### [PerAct - 512 Latents](https://drive.google.com/file/d/1c3U0BXCC-2vwNKBGFJikNsKpdgK28znX/view?usp=share_link)
+#### [PerAct - 512 Latents](https://github.com/peract/peract/releases/download/v1.0.0/peract_600k_512latents.zip)
 - ID: `seed5`
 - Num Tasks: 18
 - Training Demos: 100 episodes per task (each task includes all variations)
@@ -427,7 +426,7 @@ Videos will be saved at `$PERACT_ROOT/ckpts/multi/PERACT_BC/seed0/videos/open_dr
 It depends on the complexity of the task. With 10-20 demonstrations the agent should start to do something useful, but it will often make mistakes by picking the wrong object. For robustness you probably need 50-100 demostrations. A good way to gauge how much data you might need is to setup a simulated version of the problem and evaluate agents trained with 10, 100, 250 demonstrations.
 
 #### How long should I train the agent for? When will I start seeing good evaluation performance?
-This depends on the number, complexity, and diversity of tasks, and also how much compute you have. Take a look at this [checkpoint folder](https://drive.google.com/file/d/1vc_IkhxhNfEeEbiFPHxt_AsDclDNW8d5/view?usp=share_link) containing `train_data.csv`, `eval_data.csv` and `test_data.csv`. These log files should give you a sense of what the training losses look like and what evaluation performances to expect. All multi-task agents in the paper were trained for 600K iterations, and single-task agents were trained for 40K iterations, all with 8-GPU setups.
+This depends on the number, complexity, and diversity of tasks, and also how much compute you have. Take a look at this [checkpoint folder](https://github.com/peract/peract/releases/download/v1.0.0/peract_600k.zip) containing `train_data.csv`, `eval_data.csv` and `test_data.csv`. These log files should give you a sense of what the training losses look like and what evaluation performances to expect. All multi-task agents in the paper were trained for 600K iterations, and single-task agents were trained for 40K iterations, all with 8-GPU setups.
 
 #### Why doesn't the agent follow my language instruction?
 
@@ -453,9 +452,9 @@ Coming soon...
 
 ## Notebooks
 
-- [Colab Tutorial](https://colab.research.google.com/drive/1wpaosDS94S0rmtGmdnP0J1TjS7mEM14V?usp=sharing): This tutorial is a good starting point for understanding the data-loading and training pipeline.
-- Dataset Visualizer: Coming soon ... see [Colab](https://colab.research.google.com/drive/1wpaosDS94S0rmtGmdnP0J1TjS7mEM14V?usp=sharing) for now.
-- Q-Prediction Visualizer:  Coming soon ... see [Colab](https://colab.research.google.com/drive/1wpaosDS94S0rmtGmdnP0J1TjS7mEM14V?usp=sharing) for now.
+- [Colab Tutorial](https://colab.research.google.com/drive/1HAqemP4cE81SQ6QO1-N85j5bF4C0qLs0?usp=sharing): This tutorial is a good starting point for understanding the data-loading and training pipeline.
+- Dataset Visualizer: Coming soon ... see [Colab](https://colab.research.google.com/drive/1HAqemP4cE81SQ6QO1-N85j5bF4C0qLs0?usp=sharing) for now.
+- Q-Prediction Visualizer:  Coming soon ... see [Colab](https://colab.research.google.com/drive/1HAqemP4cE81SQ6QO1-N85j5bF4C0qLs0?usp=sharing) for now.
 - Results Notebook: Coming soon ...
 
 
@@ -519,7 +518,7 @@ Thanks for open-sourcing!
 - I ditched PyTorch Lightning and implemented multi-gpu training directly with Pytorch DDP. I could have introduced some bugs during this transition and from refactoring the repo in general. 
 
 **Update 31-Oct-2022**:
-- I have pushed my changes to [RLBench](https://github.com/MohitShridhar/RLBench/tree/peract) and [YARR](https://github.com/MohitShridhar/YARR/tree/peract). The data generation is pretty similar to [ARM](https://github.com/stepjam/ARM#running-experiments), except you run `data_generator.py` with `--all_variations=True`. You should be able to use these generated datasets with the [Colab](https://colab.research.google.com/drive/1wpaosDS94S0rmtGmdnP0J1TjS7mEM14V?usp=sharing) code.  
+- I have pushed my changes to [RLBench](https://github.com/MohitShridhar/RLBench/tree/peract) and [YARR](https://github.com/MohitShridhar/YARR/tree/peract). The data generation is pretty similar to [ARM](https://github.com/stepjam/ARM#running-experiments), except you run `data_generator.py` with `--all_variations=True`. You should be able to use these generated datasets with the [Colab](https://colab.research.google.com/drive/1HAqemP4cE81SQ6QO1-N85j5bF4C0qLs0?usp=sharing) code.  
 - For the paper, I was using PyTorch DataParallel to train on multiple GPUs. This made the code very messy and brittle. I am currently [stuck](https://github.com/Lightning-AI/lightning/issues/10098) cleaning this up with DDP and PyTorch Lightning. So the code release might be a bit delayed. Apologies.
 
 
