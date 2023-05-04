@@ -116,6 +116,7 @@ git clone https://github.com/peract/peract.git
 Install:
 ```bash
 cd peract
+pip install git+https://github.com/openai/CLIP.git
 pip install -r requirements.txt
 
 export PERACT_ROOT=$(pwd)  # mostly used as a reference point for tutorials
