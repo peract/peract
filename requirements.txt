@@ -2,7 +2,6 @@ absl-py==0.15.0
 einops==0.3.2
 ftfy
 gdown==3.13.1
-git+https://github.com/openai/CLIP.git
 hydra-core==1.0.5
 matplotlib
 numpy
