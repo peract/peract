@@ -4,7 +4,8 @@ ftfy
 gdown==3.13.1
 hydra-core==1.0.5
 matplotlib
-numpy
+numpy==1.21
+packaging==21.3
 pandas==1.4.1
 pyrender==0.1.45
 pytorch3d==0.3.0
