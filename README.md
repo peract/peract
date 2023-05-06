@@ -21,6 +21,9 @@ For the latest updates, see: [peract.github.io](https://peract.github.io)
 - Miscellaneous: [Recording Videos](#recording-videos), [Notebooks](#notebooks), [Disclaimers](#disclaimers-and-limitations), [FAQ](#faq), [Docker Guide](#docker-guide), [Licenses](#licenses)
 - Acknowledgements: [Acknowledgements](#acknowledgements), [Citations](#citations)
 
+## :fire: Hotfix
+- **Training Speed-Up and Storage Memory Reduction**: [Ishika](https://github.com/ishikasingh) found that switching from fp32 to fp16 for storing pickle files dramatically speeds-up training time and significantly reduces memory usage. Checkout her modifications to YARR [here](https://github.com/ishikasingh/YARR/blob/875f636d43032b883becaa2628429baf688b3c1d/yarr/replay_buffer/task_uniform_replay_buffer.py#L53).
+
 ## Installation
 
 ### Prerequisites
