@@ -430,7 +430,8 @@ Videos will be saved at `$PERACT_ROOT/ckpts/multi/PERACT_BC/seed0/videos/open_dr
 It depends on the complexity of the task. With 10-20 demonstrations the agent should start to do something useful, but it will often make mistakes by picking the wrong object. For robustness you probably need 50-100 demostrations. A good way to gauge how much data you might need is to setup a simulated version of the problem and evaluate agents trained with 10, 100, 250 demonstrations.
 
 #### How long should I train the agent for? When will I start seeing good evaluation performance?
-This depends on the number, complexity, and diversity of tasks, and also how much compute you have. Take a look at this [checkpoint folder](https://github.com/peract/peract/releases/download/v1.0.0/peract_600k.zip) containing `train_data.csv`, `eval_data.csv` and `test_data.csv`. These log files should give you a sense of what the training losses look like and what evaluation performances to expect. All multi-task agents in the paper were trained for 600K iterations, and single-task agents were trained for 40K iterations, all with 8-GPU setups.
+This depends on the number, complexity, and diversity of tasks, and also how much compute you have. Take a look at this [checkpoint folder](https://github.com/peract/peract/releases/download/v1.0.0/peract_600k.zip) containing `train_data.csv`, `eval_data.csv` and `test_data.csv`. These log files should 
+give you a sense of what the training losses look like and what evaluation performances to expect. All multi-task agents in the paper were trained for 600K iterations, and single-task agents were trained for 40K iterations, all with 8-GPU setups.
 
 #### Why doesn't the agent follow my language instruction?
 
@@ -452,6 +453,13 @@ Two reasons: (1) One-to-one comparisons between two agents. We can take an episo
 
 This is a design choice in [ARM (by James et al)](https://github.com/stepjam/ARM/blob/main/arm/c2farm/launch_utils.py#L161). I am guessing the keyframes get added several times because they indicate important "phase transitions" between trajectory bottlenecks, and having several copies makes them more likely to be sampled. See [issue6](https://github.com/peract/peract/issues/6#issuecomment-1355555980).
 
+#### The training is too slow and the replay pickle files take up too much space. What should I do about this?
+
+[Ishika](https://github.com/ishikasingh) found that switching from fp32 to fp16 for storing pickle files dramatically speeds-up training time and significantly reduces memory usage. Checkout her modifications to YARR [here](https://github.com/ishikasingh/YARR/blob/875f636d43032b883becaa2628429baf688b3c1d/yarr/replay_buffer/task_uniform_replay_buffer.py#L53).
+
+#### Will you release your real-robot code for data-collection and execution?
+
+Checkout [franka_htc_teleop.zip](https://github.com/peract/peract/files/11362196/franka_htc_teleop.zip) for real-robot code. `peract_demo_interface.py` is for collecting data, and `peract_agent_interface.py` is for executing trained models.  See [issue18](https://github.com/peract/peract/issues/18#issuecomment-1478827887) for more details on the setup, and [issue2](https://github.com/peract/peract/issues/2) for real-world data.
 
 ## Docker Guide
 
