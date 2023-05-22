@@ -180,7 +180,7 @@ You can evaluate the same agent on other tasks. First generate a validation data
 
 ### Pre-Generated Datasets
 
-We provide [pre-generated RLBench demonstrations](https://drive.google.com/drive/folders/1nXgp0G7jqFwJiOljS3o7DG9uURhN0mK9?usp=sharing) for train (100 episodes), validation (25 episodes), and test (25 episodes) splits used in the paper. If you directly use these datasets, you don't need to run `tools/data_generator.py` from RLBench. Using these datasets will also help reproducibility since each scene is randomly sampled in `data_generator.py`.
+We provide [pre-generated RLBench demonstrations](https://drive.google.com/drive/folders/0B2LlLwoO3nfZfkFqMEhXWkxBdjJNNndGYl9uUDQwS1pfNkNHSzFDNGwzd1NnTmlpZXR1bVE?resourcekey=0-jRw5RaXEYRLe2W6aNrNFEQ&usp=share_link) for train (100 episodes), validation (25 episodes), and test (25 episodes) splits used in the paper. If you directly use these datasets, you don't need to run `tools/data_generator.py` from RLBench. Using these datasets will also help reproducibility since each scene is randomly sampled in `data_generator.py`.
 
 Is there one big zip file with all splits and tasks instead of individual files? No. My gDrive account will get rate-limited if everyone is directly downloading huge files. I recommend downloading through [rclone](https://rclone.org/drive/) with Google API Console enabled. The full dataset of zip files is ~116GB. 
 
@@ -459,7 +459,7 @@ This is a design choice in [ARM (by James et al)](https://github.com/stepjam/ARM
 
 #### Will you release your real-robot code for data-collection and execution?
 
-Checkout [franka_htc_teleop.zip](https://github.com/peract/peract/files/11362196/franka_htc_teleop.zip) for real-robot code. `peract_demo_interface.py` is for collecting data, and `peract_agent_interface.py` is for executing trained models.  See [issue18](https://github.com/peract/peract/issues/18#issuecomment-1478827887) for more details on the setup, and [issue2](https://github.com/peract/peract/issues/2) for real-world data.
+Checkout [franka_htc_teleop.zip](https://github.com/peract/peract/files/11362196/franka_htc_teleop.zip) for real-robot code. `peract_demo_interface.py` is for collecting data, and `peract_agent_interface.py` is for executing trained models. The real-robot datasets are [here](https://drive.google.com/drive/folders/0B2LlLwoO3nfZfm45a0k5ZHVra0ZJZk1aTXVXWHFTY3J4YnRhR2d5c2t3NE9uLW5tU1VNVWs?resourcekey=0-yk89R3sWdmKkOtJX0GTNhA&usp=share_link). See [issue18](https://github.com/peract/peract/issues/18#issuecomment-1478827887) for more details on the setup, and [issue2](https://github.com/peract/peract/issues/2) for real-world setup details.
 
 ## Docker Guide
 
