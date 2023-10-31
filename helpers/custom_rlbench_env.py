@@ -186,8 +186,8 @@ class CustomRLBenchEnv(RLBenchEnv):
             1, live_demos=False, random_selection=False, from_episode_number=i)
 
         self._task.set_variation(d.variation_number)
-        _, obs = self._task.reset_to_demo(d)
-        self._lang_goal = self._task.get_task_descriptions()[0]
+        lang_descriptions, obs = self._task.reset_to_demo(d)
+        self._lang_goal = lang_descriptions[0]
 
         self._previous_obs_dict = self.extract_obs(obs)
         self._record_current_episode = (
@@ -379,8 +379,8 @@ class CustomMultiTaskRLBenchEnv(MultiTaskRLBenchEnv):
             1, live_demos=False, random_selection=False, from_episode_number=i)[0]
 
         self._task.set_variation(d.variation_number)
-        _, obs = self._task.reset_to_demo(d)
-        self._lang_goal = self._task.get_task_descriptions()[0]
+        lang_descriptions, obs = self._task.reset_to_demo(d)
+        self._lang_goal = lang_descriptions[0]
 
         self._previous_obs_dict = self.extract_obs(obs)
         self._record_current_episode = (
