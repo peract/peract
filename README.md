@@ -148,7 +148,7 @@ python dataset_generator.py --tasks=open_drawer \
                             --renderer=opengl \
                             --episodes_per_task=10 \
                             --processes=1 \
-                            --all_variations=True
+                            --variations=-1
 ```
 This will take a few minutes to finish.
 
