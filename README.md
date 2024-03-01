@@ -213,7 +213,7 @@ See [quickstart guide](#quickstart) on how to evaluate these checkpoints. Make s
 
 ## Data Generation
 
-Data generation is pretty similar to the [ARM setup](https://github.com/stepjam/RLBench), except you use `--all_variations=True` to sample all task variations:
+Data generation is pretty similar to the [ARM setup](https://github.com/stepjam/RLBench), except you use `--variations=-1` to sample all task variations:
 
 ```bash
 cd <install_dir>/RLBench/tools
@@ -223,7 +223,7 @@ python dataset_generator.py --tasks=open_drawer \
                             --renderer=opengl \
                             --episodes_per_task=100 \
                             --processes=1 \
-                            --all_variations=True
+                            --variations=-1
 ```
 
 You can run these in parallel for multiple tasks. Here is a list of 18 tasks used in the paper (in the same order as results Table 1):
