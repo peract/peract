@@ -44,9 +44,9 @@ pip install --upgrade pip
 Follow instructions from the official [PyRep](https://github.com/stepjam/PyRep) repo; reproduced here for convenience:
 
 PyRep requires version **4.1** of CoppeliaSim. Download: 
-- [Ubuntu 16.04](https://www.coppeliarobotics.com/files/CoppeliaSim_Edu_V4_1_0_Ubuntu16_04.tar.xz)
-- [Ubuntu 18.04](https://www.coppeliarobotics.com/files/CoppeliaSim_Edu_V4_1_0_Ubuntu18_04.tar.xz)
-- [Ubuntu 20.04](https://www.coppeliarobotics.com/files/CoppeliaSim_Edu_V4_1_0_Ubuntu20_04.tar.xz)
+- [Ubuntu 16.04](https://downloads.coppeliarobotics.com/V4_1_0/CoppeliaSim_Player_V4_1_0_Ubuntu16_04.tar.xz)
+- [Ubuntu 18.04](https://www.coppeliarobotics.com/previousVersions)
+- [Ubuntu 20.04](https://www.coppeliarobotics.com/previousVersions#)
 
 Once you have downloaded CoppeliaSim, you can pull PyRep from git:
 
