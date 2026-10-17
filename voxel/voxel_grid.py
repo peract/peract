@@ -37,20 +37,20 @@ class VoxelGrid(nn.Module):
             [torch.tensor([batch_size], ), max_dims,
              torch.tensor([4 + feature_size], )], -1).tolist()
 
-        self.register_buffer('_ones_max_coords', torch.ones((batch_size, max_num_coords, 1)))
+        self.register_buffer('_ones_max_coords', torch.ones((batch_size, max_num_coords, 1)), persistent=False)
         self._num_coords = max_num_coords
 
         shape = self._total_dims_list
         result_dim_sizes = torch.tensor(
             [reduce(mul, shape[i + 1:], 1) for i in range(len(shape) - 1)] + [1], )
-        self.register_buffer('_result_dim_sizes', result_dim_sizes)
+        self.register_buffer('_result_dim_sizes', result_dim_sizes, persistent=False)
         flat_result_size = reduce(mul, shape, 1)
 
         self._initial_val = torch.tensor(0, dtype=torch.float)
         flat_output = torch.ones(flat_result_size, dtype=torch.float) * self._initial_val
-        self.register_buffer('_flat_output', flat_output)
+        self.register_buffer('_flat_output', flat_output, persistent=False)
 
-        self.register_buffer('_arange_to_max_coords', torch.arange(4 + feature_size))
+        self.register_buffer('_arange_to_max_coords', torch.arange(4 + feature_size), persistent=False)
         self._flat_zeros = torch.zeros(flat_result_size, dtype=torch.float)
 
         self._const_1 = torch.tensor(1.0, )
@@ -58,30 +58,30 @@ class VoxelGrid(nn.Module):
 
         # Coordinate Bounds:
         bb_mins = self._coord_bounds[..., 0:3]
-        self.register_buffer('_bb_mins', bb_mins)
+        self.register_buffer('_bb_mins', bb_mins, persistent=False)
         bb_maxs = self._coord_bounds[..., 3:6]
         bb_ranges = bb_maxs - bb_mins
         # get voxel dimensions. 'DIMS' mode
         self._dims = dims = self._voxel_shape_spec.int()
         dims_orig = self._voxel_shape_spec.int() - 2
-        self.register_buffer('_dims_orig', dims_orig)
+        self.register_buffer('_dims_orig', dims_orig, persistent=False)
 
         # self._dims_m_one = (dims - 1).int()
         dims_m_one = (dims - 1).int()
-        self.register_buffer('_dims_m_one', dims_m_one)
+        self.register_buffer('_dims_m_one', dims_m_one, persistent=False)
 
         # BS x 1 x 3
         res = bb_ranges / (dims_orig.float() + MIN_DENOMINATOR)
         self._res_minis_2 = bb_ranges / (dims.float() - 2 + MIN_DENOMINATOR)
-        self.register_buffer('_res', res)
+        self.register_buffer('_res', res, persistent=False)
 
         voxel_indicy_denmominator = res + MIN_DENOMINATOR
-        self.register_buffer('_voxel_indicy_denmominator', voxel_indicy_denmominator)
+        self.register_buffer('_voxel_indicy_denmominator', voxel_indicy_denmominator, persistent=False)
 
-        self.register_buffer('_dims_m_one_zeros', torch.zeros_like(dims_m_one))
+        self.register_buffer('_dims_m_one_zeros', torch.zeros_like(dims_m_one), persistent=False)
 
         batch_indices = torch.arange(self._batch_size, dtype=torch.int).view(self._batch_size, 1, 1)
-        self.register_buffer('_tiled_batch_indices', batch_indices.repeat([1, self._num_coords, 1]))
+        self.register_buffer('_tiled_batch_indices', batch_indices.repeat([1, self._num_coords, 1]), persistent=False)
 
         w = self._voxel_shape[0] + 2
         arange = torch.arange(0, w, dtype=torch.float, )
@@ -90,7 +90,7 @@ class VoxelGrid(nn.Module):
             arange.view(1, w, 1, 1).repeat([w, 1, w, 1]),
             arange.view(1, 1, w, 1).repeat([w, w, 1, 1])], dim=-1).unsqueeze(
             0).repeat([self._batch_size, 1, 1, 1, 1])
-        self.register_buffer('_index_grid', index_grid)
+        self.register_buffer('_index_grid', index_grid, persistent=False)
 
     def _broadcast(self, src: torch.Tensor, other: torch.Tensor, dim: int):
         if dim < 0:
